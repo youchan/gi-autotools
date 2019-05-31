@@ -1,0 +1,20 @@
+AC_INIT([amhello], [1.0], [youchan01@gmail.com])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AC_PROG_CXX
+AM_PROG_AR
+LT_INIT
+
+AX_CHECK_COMPILE_FLAG([-std=c++11], [CXXFLAGS="$CXXFLAGS -std=c++11"])
+
+AC_ENABLE_SHARED
+AC_CONFIG_MACRO_DIR([m4])
+PKG_CHECK_MODULES(GLIB, [glib-2.0])
+GOBJECT_INTROSPECTION_CHECK([1.56])
+
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_FILES([
+ Makefile
+ src/Makefile
+ glib/Makefile
+])
+AC_OUTPUT
